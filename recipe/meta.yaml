@@ -20,12 +20,10 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - python
-    - snappy 1.1.6|1.1.7
-    - toolchain
+    - snappy
     - msinttypes  # [win and py27]
   run:
     - python
-    - snappy 1.1.6|1.1.7
 
 test:
   imports:
