@@ -25,7 +25,6 @@ requirements:
     - msinttypes  # [win and py27]
   run:
     - python
-    - snappy
 
 test:
   imports:
