@@ -21,14 +21,20 @@ requirements:
   host:
     - python
     - pip
+    - setuptools
+    - wheel
     - snappy
-    - msinttypes  # [win and py27]
   run:
     - python
 
 test:
+  requires:
+    - python
+    - pip
   imports:
     - snappy
+  commands:
+    - pip check
 
 about:
   home: https://github.com/andrix/python-snappy
