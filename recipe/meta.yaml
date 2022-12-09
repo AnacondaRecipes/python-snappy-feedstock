@@ -41,11 +41,17 @@ about:
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'Python library for the snappy compression library from Google'
+  summary: Python library for the snappy compression library from Google
+  description: |
+    Python library for the snappy compression library from Google
   dev_url: https://github.com/andrix/python-snappy
+  doc_url: https://github.com/andrix/python-snappy
 
 extra:
   recipe-maintainers:
     - mariusvniekerk
     - martindurant
     - djsutherland
+  skip-lints:
+    - missing_doc_source_url
+    - missing_license_url
