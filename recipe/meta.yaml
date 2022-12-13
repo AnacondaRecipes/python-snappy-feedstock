@@ -1,5 +1,5 @@
-{% set version = "0.6.0" %}
-{% set sha256 = "168a98d3f597b633cfeeae7fe1c78a8dfd81f018b866cf7ce9e4c56086af891a" %}
+{% set version = "0.6.1" %}
+{% set sha256 = "b6a107ab06206acc5359d4c5632bd9b22d448702a79b3169b0c62e0fb808bb2a" %}
 
 package:
   name: python-snappy
@@ -21,25 +21,37 @@ requirements:
   host:
     - python
     - pip
+    - setuptools
+    - wheel
     - snappy
-    - msinttypes  # [win and py27]
   run:
     - python
 
 test:
+  requires:
+    - python
+    - pip
   imports:
     - snappy
+  commands:
+    - pip check
 
 about:
   home: https://github.com/andrix/python-snappy
   license: BSD-3-Clause
   license_family: BSD
   license_file: LICENSE
-  summary: 'Python library for the snappy compression library from Google'
+  summary: Python library for the snappy compression library from Google
+  description: |
+    Python library for the snappy compression library from Google
   dev_url: https://github.com/andrix/python-snappy
+  doc_url: https://github.com/andrix/python-snappy
 
 extra:
   recipe-maintainers:
     - mariusvniekerk
     - martindurant
     - djsutherland
+  skip-lints:
+    - missing_doc_source_url
+    - missing_license_url
