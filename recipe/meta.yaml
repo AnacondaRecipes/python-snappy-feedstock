@@ -1,18 +1,17 @@
-{% set version = "0.6.1" %}
-{% set sha256 = "b6a107ab06206acc5359d4c5632bd9b22d448702a79b3169b0c62e0fb808bb2a" %}
+{% set name = "python-snappy" %}
+{% set version = "0.7.3" %}
 
 package:
-  name: python-snappy
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
   fn: python-snappy-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/p/python-snappy/python-snappy-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
-
+  url: https://pypi.org/packages/source/p/python-snappy/python_snappy-{{ version }}.tar.gz
+  sha256: 40216c1badfb2d38ac781ecb162a1d0ec40f8ee9747e610bcfefdfa79486cee3
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
   build:
@@ -24,8 +23,10 @@ requirements:
     - setuptools
     - wheel
     - snappy
+    - cramjam >=2.6.0
   run:
     - python
+    - cramjam
 
 test:
   requires:
@@ -52,6 +53,3 @@ extra:
     - mariusvniekerk
     - martindurant
     - djsutherland
-  skip-lints:
-    - missing_doc_source_url
-    - missing_license_url
