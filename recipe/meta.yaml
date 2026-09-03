@@ -2,15 +2,19 @@
 {% set version = "0.7.3" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   fn: python-snappy-{{ version }}.tar.gz
   url: https://pypi.org/packages/source/p/python-snappy/python_snappy-{{ version }}.tar.gz
   sha256: 40216c1badfb2d38ac781ecb162a1d0ec40f8ee9747e610bcfefdfa79486cee3
+
 build:
-  number: 0
+  number: 1
+  # cramjam 2.12.0 doesn't support Python 310 anymore
+  # https://github.com/milesgranger/cramjam/blob/3b07aadfb13ba03a0b4582f07b3fa0e1f40c94bd/pyproject.toml#L6
+  skip: true  # [py<311]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
 
 requirements:
@@ -19,7 +23,7 @@ requirements:
     - pip
     - setuptools
     - wheel
-    - snappy
+    - snappy {{ snappy }}
     - cramjam >=2.6.0
   run:
     - python
